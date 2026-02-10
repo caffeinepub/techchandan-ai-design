@@ -1,0 +1,70 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T08:10:18.973Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-11",
+        "summary": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/layout/HeaderNav.tsx",
+          "frontend/src/components/layout/Footer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/layout/HeaderNav.tsx",
+          "frontend/src/components/layout/Footer.tsx"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/config/siteData.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/config/siteData.ts"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/config/siteData.ts"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/config/siteData.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/HeaderNav.tsx",
+    "frontend/src/config/siteData.ts",
+    "frontend/src/pages/HomePage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

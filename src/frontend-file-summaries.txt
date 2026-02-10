@@ -1,0 +1,23 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with routes for Home, Services, Portfolio, Contact, and Order pages, all wrapped in a shared SiteLayout component.",
+  "frontend/src/components/layout/SiteLayout.tsx": "Layout wrapper component that provides consistent structure with HeaderNav, main content area, and Footer across all pages.",
+  "frontend/src/components/layout/HeaderNav.tsx": "Responsive navigation header with logo and brand name sourced from siteData config, desktop menu, and mobile sheet menu that highlights the current route with gradient styling.",
+  "frontend/src/components/layout/Footer.tsx": "Site footer with brand information sourced from siteData config, quick navigation links, contact methods, and attribution to caffeine.ai with UTM tracking.",
+  "frontend/src/pages/HomePage.tsx": "Landing page featuring a hero section with \"TechChandan AI Design\" as the primary H1 title with gradient styling, background image, value proposition, featured services preview, and call-to-action sections.",
+  "frontend/src/pages/ServicesPage.tsx": "Services listing page displaying all five design services (YouTube thumbnails, Instagram covers, social posts, logos, banners) with pricing, features, and order CTAs that prefill the service selection.",
+  "frontend/src/pages/PortfolioPage.tsx": "Portfolio gallery page with category filtering and responsive grid layout displaying sample work, with click-to-view detail dialog functionality.",
+  "frontend/src/pages/ContactPage.tsx": "Contact page featuring three contact methods (WhatsApp, email, Instagram) as interactive cards with links and a reference to the order form.",
+  "frontend/src/pages/OrderBookingPage.tsx": "Order submission page that requires Internet Identity authentication and displays either a login prompt or the order form, with success state handling.",
+  "frontend/src/components/order/OrderForm.tsx": "Comprehensive order form with validation for name, email, phone, contact preference, service type, description, and optional deadline/budget fields, integrated with backend submission.",
+  "frontend/src/components/portfolio/PortfolioDetailDialog.tsx": "Modal dialog component that displays enlarged portfolio samples with title, category badge, and description.",
+  "frontend/src/config/services.ts": "Service definitions including five design services with IDs, names, descriptions, pricing, categories, and feature lists.",
+  "frontend/src/config/portfolioSamples.ts": "Portfolio sample data with eight items mapped to generated images, each with title, category, and description.",
+  "frontend/src/config/contactLinks.ts": "Centralized contact information (WhatsApp, email, Instagram) with computed URL helpers for consistent linking across the site.",
+  "frontend/src/config/siteData.ts": "Site-wide content data including brand name \"TechChandan AI Design\", tagline, hero content, and about section text.",
+  "frontend/src/utils/orderPrefill.ts": "Utility functions to encode and decode service IDs for URL-based service preselection when navigating from Services to Order page.",
+  "frontend/src/hooks/useSubmitBooking.ts": "Custom React hook that handles booking submission to the backend, mapping form fields to the backend's expected format and managing loading/error states.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching bookings data from the backend (admin-only functionality).",
+  "frontend/src/index.css": "Global styles with OKLCH color system defining a dark-themed AI/tech aesthetic with neon blue and purple accents, custom scrollbar, and utility classes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with neon glow shadows, custom animations, and Inter font family for the modern AI/tech design system.",
+  "frontend/index.html": "HTML entry point with document title set to \"TechChandan AI Design - Professional AI-Powered Design Services\"."
+}

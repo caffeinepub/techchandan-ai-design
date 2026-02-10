@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Professional portfolio + service-selling website for an AI-powered design business with modern minimal AI/tech aesthetic, showcasing services, pricing, portfolio, contact links, and an order/booking request flow.",
+  "architectural_notes": [
+    "Target audience: content creators, YouTubers, influencers, and small businesses seeking affordable design services.",
+    "Design style: modern/minimal AI/tech theme; clean futuristic look with neon blue, purple, black palette.",
+    "Core pages: Home, Services (with pricing), Portfolio/Gallery, Contact (WhatsApp/email/Instagram), Order/Booking request flow.",
+    "Site must be mobile-friendly with easy navigation.",
+    "Brand/site name: \"TechChandan AI Design\" (reflect in header logo text and Home page title)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-site-layout-with-global-navigation-header-nav-footer-that-links-to-home-services-portfolio-contact-and-order-booking",
+      "title": "Create a responsive site layout with global navigation (header/nav + footer) that links to: Home, Services, Portfolio, Contact, and Order/Booking.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-cohesive-modern-minimal-clean-futuristic-ai-tech-visual-theme-across-the-entire-site-using-the-user-s-preferred-palette-neon-blue-purple-black-with-consistent-typography-spacing-and-component-styling",
+      "title": "Implement a cohesive modern, minimal, clean futuristic AI/tech visual theme across the entire site using the user’s preferred palette (neon blue, purple, black), with consistent typography, spacing, and component styling.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-home-page-to-introduce-the-brand-and-summarize-the-design-services-including-a-hero-section-headline-short-description-primary-call-to-action-to-order-booking-and-a-services-preview-section-linking-to-the-services-page",
+      "title": "Build the Home page to introduce the brand and summarize the design services, including a hero section (headline + short description + primary call-to-action to Order/Booking) and a services preview section linking to the Services page.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-services-page-listing-all-offerings-youtube-thumbnails-instagram-reel-covers-social-media-posts-logo-design-and-banner-poster-design-with-clear-pricing-presentation-and-a-per-service-call-to-action-to-place-an-order-prefilling-the-selected-service-in-the-order-form",
+      "title": "Build the Services page listing all offerings—YouTube thumbnails, Instagram reel covers, social media posts, logo design, and banner/poster design—with clear pricing presentation and a per-service call-to-action to place an order (prefilling the selected service in the order form).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-portfolio-gallery-page-to-display-design-samples-with-a-responsive-grid-category-filtering-matching-the-service-categories-and-a-lightweight-detail-view-modal-or-dedicated-section-for-viewing-a-sample-larger-with-title-and-category",
+      "title": "Build a Portfolio/Gallery page to display design samples with a responsive grid, category filtering (matching the service categories), and a lightweight detail view (modal or dedicated section) for viewing a sample larger with title and category.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-contact-page-that-displays-and-links-out-to-whatsapp-email-and-instagram-with-the-link-targets-configurable-in-a-single-frontend-config-constants-location",
+      "title": "Build a Contact page that displays and links out to WhatsApp, email, and Instagram, with the link targets configurable in a single frontend config/constants location.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-order-booking-section-page-or-routed-view-with-a-client-request-form-that-collects-name-email-preferred-contact-whatsapp-instagram-email-service-type-project-description-deadline-optional-and-budget-range-optional",
+      "title": "Create an Order/Booking section (page or routed view) with a client request form that collects: name, email, preferred contact (WhatsApp/Instagram/email), service type, project description, deadline (optional), and budget range (optional).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-connect-the-order-booking-form-to-the-backend-submit-method-using-the-project-s-actor-agent-pattern-and-handle-loading-error-states-gracefully",
+      "title": "Connect the Order/Booking form to the backend submit method using the project’s actor/agent pattern, and handle loading/error states gracefully.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-small-consistent-set-of-static-portfolio-sample-images-and-a-brand-mark-to-avoid-an-empty-looking-initial-site-store-these-assets-in-frontend-public-assets-generated-and-use-them-in-home-hero-brand-and-portfolio-sample-thumbnails",
+      "title": "Add a small, consistent set of static portfolio sample images and a brand mark to avoid an empty-looking initial site; store these assets in frontend/public/assets/generated and use them in Home (hero/brand) and Portfolio (sample thumbnails).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-site-brand-name-everywhere-it-is-displayed-in-the-header-logo-text-from-ai-design-studio-to-techchandan-ai-design",
+      "title": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-homepage-hero-title-text-to-reflect-the-new-brand-name-techchandan-ai-design-while-keeping-the-existing-ai-tech-styling-gradient-emphasis-consistent-with-the-current-design",
+      "title": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-site-metadata-to-use-the-new-brand-name-techchandan-ai-design-including-the-base-html-document-title-and-the-central-site-metadata-config-used-for-branding-text",
+      "title": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create Home page introducing brand and summarizing services (modern AI/tech themed, mobile-friendly).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create Services page listing offerings (YouTube thumbnails, Instagram reel covers, social posts, logo design, banner/poster design) with pricing.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create Portfolio/Gallery page to display design samples.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Create Contact page with WhatsApp, email, and Instagram links.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add Order/Booking section for clients to request work.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement site-wide modern, minimal, clean futuristic AI/tech styling (neon blue/purple/black), easy navigation, and responsive/mobile-first layout.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement backend support to receive and store order/booking requests, including a query method to list requests (for future use) and a submit method that persists each request with a timestamp.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update website branding name to \"TechChandan AI Design\" (update header logo text and homepage title accordingly).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "TechChandan AI Design",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

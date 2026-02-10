@@ -1,0 +1,67 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Rebrand UI text to TechChandan AI Design",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Replace the header brand/logo text with \"TechChandan AI Design\" everywhere it appears in the header navigation UI.",
+      "acceptanceCriteria": [
+        "The header brand/logo text renders exactly as \"TechChandan AI Design\" on desktop and mobile navigation.",
+        "No instances of \"AI Design Studio\" remain in the header UI."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/HeaderNav.tsx",
+          "operation": "modify",
+          "description": "Update the header logo/brand text to render \"TechChandan AI Design\" (preferably sourced from the central site metadata/config) while keeping existing gradient styling and ensuring it appears consistently in both desktop and mobile header states."
+        },
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "modify",
+          "description": "If the brand text displayed in the global layout/footer is shared with header branding expectations, align it to the new brand name to avoid any lingering \"AI Design Studio\" occurrences in persistent navigation-adjacent UI."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Update the Home page hero H1 to include the exact new brand name while preserving the existing gradient/AI-tech visual style and responsive layout.",
+      "acceptanceCriteria": [
+        "The primary H1/hero title on the Home page includes the exact text \"TechChandan AI Design\".",
+        "The hero title remains visually consistent with the existing typography and gradient style (no layout break on mobile)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Adjust the hero H1 so it includes the exact text \"TechChandan AI Design\" (ideally by composing the H1 with the existing gradient-emphasis span) and keep current typography/spacing so mobile layout remains intact."
+        },
+        {
+          "path": "frontend/src/config/siteData.ts",
+          "operation": "modify",
+          "description": "Update any hero/branding copy in the central config to reflect the new brand name so the Home hero can consistently source/display \"TechChandan AI Design\" without duplicating strings."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Update base HTML document title and central branding metadata/config to use \"TechChandan AI Design\".",
+      "acceptanceCriteria": [
+        "The browser tab title includes \"TechChandan AI Design\".",
+        "The central site metadata/config brand name is set to \"TechChandan AI Design\"."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the base HTML document <title> so it includes \"TechChandan AI Design\"."
+        },
+        {
+          "path": "frontend/src/config/siteData.ts",
+          "operation": "modify",
+          "description": "Set the central site metadata/config brandName to \"TechChandan AI Design\" and ensure other branding text derived from it remains consistent."
+        }
+      ]
+    }
+  ]
+}

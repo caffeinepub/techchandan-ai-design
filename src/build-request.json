@@ -1,0 +1,83 @@
+{
+  "kind": "build_request",
+  "title": "Update site branding to \"TechChandan AI Design\" (header logo + homepage title)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Change website name to \"TechChandan AI Design\"\nUpdate header logo text and homepage title"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The header brand/logo text renders exactly as \"TechChandan AI Design\" on desktop and mobile navigation.",
+        "No instances of \"AI Design Studio\" remain in the header UI."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Update header logo text and homepage title"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The primary H1/hero title on the Home page includes the exact text \"TechChandan AI Design\".",
+        "The hero title remains visually consistent with the existing typography and gradient style (no layout break on mobile)."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Change website name to \"TechChandan AI Design\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "The browser tab title includes \"TechChandan AI Design\".",
+        "The central site metadata/config brand name is set to \"TechChandan AI Design\"."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (shadcn components are read-only).",
+    "Do not edit immutable hook/entry files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx."
+  ],
+  "nonGoals": [
+    "Do not change the logo image asset (only update displayed text).",
+    "Do not change routing, services/pricing content, portfolio content, or order/booking flow behavior."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

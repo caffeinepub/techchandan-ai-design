@@ -1,0 +1,65 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-site-brand-name-everywhere-it-is-displayed-in-the-header-logo-text-from-ai-design-studio-to-techchandan-ai-design",
+      "featureTitle": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+      "files": [
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/HeaderNav.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-homepage-hero-title-text-to-reflect-the-new-brand-name-techchandan-ai-design-while-keeping-the-existing-ai-tech-styling-gradient-emphasis-consistent-with-the-current-design",
+      "featureTitle": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+      "files": [
+        "frontend/src/config/siteData.ts",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-site-metadata-to-use-the-new-brand-name-techchandan-ai-design-including-the-base-html-document-title-and-the-central-site-metadata-config-used-for-branding-text",
+      "featureTitle": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/config/siteData.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
