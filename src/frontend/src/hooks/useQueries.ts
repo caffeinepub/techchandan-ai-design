@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { useActor } from './useActor';
-import type { Booking } from '../backend';
+import type { Order } from '../backend';
 
-export function useGetBookings() {
+export function useGetAllOrders() {
   const { actor, isFetching } = useActor();
 
-  return useQuery<Booking[]>({
-    queryKey: ['bookings'],
+  return useQuery<Order[]>({
+    queryKey: ['orders'],
     queryFn: async () => {
       if (!actor) return [];
-      return actor.getBookings();
+      return actor.getAllOrders();
     },
     enabled: !!actor && !isFetching,
   });

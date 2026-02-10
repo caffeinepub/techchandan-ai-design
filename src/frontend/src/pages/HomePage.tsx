@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden" data-section="home-hero">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -60,7 +60,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 md:py-24 bg-accent/20">
+      <section className="py-16 md:py-24 bg-accent/20" data-section="home-features">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="border-chart-1/20 bg-card/50 backdrop-blur">
@@ -91,7 +91,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24" data-section="home-services">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
@@ -132,7 +132,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-chart-1/10 via-chart-2/10 to-chart-1/10">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-chart-1/10 via-chart-2/10 to-chart-1/10" data-section="home-cta">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Elevate Your Brand?</h2>

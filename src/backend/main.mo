@@ -1,15 +1,20 @@
-import List "mo:core/List";
 import Map "mo:core/Map";
 import Iter "mo:core/Iter";
-import Time "mo:core/Time";
+import List "mo:core/List";
 import Principal "mo:core/Principal";
+import Time "mo:core/Time";
 import Runtime "mo:core/Runtime";
 import AccessControl "authorization/access-control";
 import MixinAuthorization "authorization/MixinAuthorization";
+import Storage "blob-storage/Storage";
+import MixinStorage "blob-storage/Mixin";
+
+
 
 actor {
-  // Initialize the access control system
+  // Authorization and Storage mixins
   let accessControlState = AccessControl.initState();
+  include MixinStorage();
   include MixinAuthorization(accessControlState);
 
   // User profile type and storage
@@ -41,40 +46,52 @@ actor {
     userProfiles.add(caller, profile);
   };
 
-  // Booking system
-  public type Booking = {
+  // File storage management
+  public type ReferenceFile = {
+    filename : Text;
+    contentType : Text;
+    blob : Storage.ExternalBlob;
+  };
+
+  // Order system
+  public type Order = {
     name : Text;
-    phoneNumber : Text;
-    location : Text;
-    deadline : Text;
-    bonusService : Text;
+    email : Text;
+    serviceType : Text;
+    description : Text;
     timestamp : Int;
+    referenceFile : ?ReferenceFile;
   };
 
-  let bookings = List.empty<Booking>();
+  let orders = List.empty<Order>();
 
-  public shared ({ caller }) func submitBooking(name : Text, phoneNumber : Text, location : Text, deadline : Text, bonusService : Text) : async () {
-    // Only authenticated users can submit bookings
-    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
-      Runtime.trap("Unauthorized: Only users can submit bookings");
-    };
+  // Public order submission function (anonymous access allowed)
+  public shared ({ caller }) func submitOrder(
+    name : Text,
+    email : Text,
+    serviceType : Text,
+    description : Text,
+    referenceFile : ?ReferenceFile,
+  ) : async () {
+    // TODO: Validate input data if needed (e.g., non-empty name)
 
-    let booking : Booking = {
+    let order : Order = {
       name;
-      phoneNumber;
-      location;
-      deadline;
-      bonusService;
+      email;
+      serviceType;
+      description;
       timestamp = Time.now();
+      referenceFile;
     };
-    bookings.add(booking);
+    orders.add(order);
   };
 
-  public query ({ caller }) func getBookings() : async [Booking] {
-    // Only admins can view all bookings (contains sensitive personal data)
+  // For admin use only: get all orders (contains personal data)
+  public query ({ caller }) func getAllOrders() : async [Order] {
+    // Only admin users can view all orders
     if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can view all bookings");
+      Runtime.trap("Unauthorized: Only admins can view all orders");
     };
-    bookings.toArray();
+    orders.toArray();
   };
 };

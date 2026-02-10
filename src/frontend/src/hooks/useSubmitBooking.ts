@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { useActor } from './useActor';
+import { ExternalBlob } from '@/backend';
+import type { ReferenceFile } from '@/backend';
 
 interface BookingData {
   name: string;
-  phoneNumber: string;
   email: string;
-  preferredContact: string;
   serviceType: string;
   description: string;
-  deadline: string;
-  budgetRange: string;
+  referenceFile?: File | null;
 }
 
 export function useSubmitBooking() {
@@ -27,19 +26,28 @@ export function useSubmitBooking() {
     setError(null);
 
     try {
-      // Map the form data to the backend's expected format
-      // Backend expects: name, phoneNumber, location, deadline, bonusService
-      // We'll map our fields as follows:
-      // - name -> name
-      // - phoneNumber -> phoneNumber
-      // - email + preferredContact -> location (as contact info)
-      // - deadline -> deadline
-      // - serviceType + description + budgetRange -> bonusService (as project details)
+      let referenceFileData: ReferenceFile | null = null;
 
-      const location = `Email: ${data.email} | Preferred: ${data.preferredContact}`;
-      const bonusService = `Service: ${data.serviceType} | Description: ${data.description} | Budget: ${data.budgetRange}`;
+      // Convert File to ReferenceFile if provided
+      if (data.referenceFile) {
+        const file = data.referenceFile;
+        const arrayBuffer = await file.arrayBuffer();
+        const bytes = new Uint8Array(arrayBuffer);
+        
+        referenceFileData = {
+          filename: file.name,
+          contentType: file.type || 'application/octet-stream',
+          blob: ExternalBlob.fromBytes(bytes),
+        };
+      }
 
-      await actor.submitBooking(data.name, data.phoneNumber, location, data.deadline, bonusService);
+      await actor.submitOrder(
+        data.name,
+        data.email,
+        data.serviceType,
+        data.description,
+        referenceFileData
+      );
 
       setIsSubmitting(false);
       return true;

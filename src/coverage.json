@@ -1,67 +1,56 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T08:10:18.973Z",
+  "generatedAt": "2026-02-10T09:15:40.646Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
     "total": 3,
-    "implemented": 3,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-11",
-        "summary": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+        "id": "REQ-29",
+        "summary": "Update the service pricing data to use the new tiered pricing packages (in INR) exactly as provided: YouTube Thumbnail — ₹199–299; Instagram Reel Cover — ₹149–199; Logo Design — ₹399–699; Social Media Post — ₹149; Banner Design — ₹299.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/layout/HeaderNav.tsx",
-          "frontend/src/components/layout/Footer.tsx"
+          "frontend/src/config/services.ts"
         ],
         "matchedFiles": [
-          "frontend/src/components/layout/HeaderNav.tsx",
-          "frontend/src/components/layout/Footer.tsx"
+          "frontend/src/config/services.ts"
         ]
       },
       {
-        "id": "REQ-12",
-        "summary": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+        "id": "REQ-30",
+        "summary": "Update the Services page copy to present the pricing as packages by changing the main heading from \"Our Services\" to \"Our Pricing\" and ensure all displayed prices reflect the updated tiered INR packages.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/config/siteData.ts"
+          "frontend/src/pages/ServicesPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/config/siteData.ts"
+          "frontend/src/pages/ServicesPage.tsx"
         ]
       },
       {
-        "id": "REQ-13",
-        "summary": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
-        "status": "implemented",
+        "id": "REQ-31",
+        "summary": "Ensure all other UI surfaces that display service pricing use the updated tiered INR package values, including the Order form service dropdown and the Home page service preview section.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/index.html",
-          "frontend/src/config/siteData.ts"
+          "frontend/src/components/order/OrderForm.tsx",
+          "frontend/src/pages/HomePage.tsx"
         ],
-        "matchedFiles": [
-          "frontend/index.html",
-          "frontend/src/config/siteData.ts"
-        ]
+        "matchedFiles": []
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.html",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/components/layout/HeaderNav.tsx",
-    "frontend/src/config/siteData.ts",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/config/services.ts",
+    "frontend/src/pages/ServicesPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

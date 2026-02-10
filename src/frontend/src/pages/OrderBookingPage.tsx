@@ -3,20 +3,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle2 } from 'lucide-react';
 import OrderForm from '@/components/order/OrderForm';
-import { useInternetIdentity } from '@/hooks/useInternetIdentity';
 import { Button } from '@/components/ui/button';
 
 export default function OrderBookingPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { identity, login, loginStatus } = useInternetIdentity();
 
   const handleSubmitSuccess = () => {
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const isAuthenticated = !!identity;
-  const isLoggingIn = loginStatus === 'logging-in';
 
   if (isSubmitted) {
     return (
@@ -26,8 +21,7 @@ export default function OrderBookingPage() {
             <CheckCircle2 className="h-5 w-5 text-chart-1" />
             <AlertDescription className="text-base">
               <strong className="block mb-2">Order Submitted Successfully!</strong>
-              Thank you for your order. We've received your request and will get back to you shortly via your preferred
-              contact method.
+              Thank you for your order. We've received your request and will get back to you shortly.
             </AlertDescription>
           </Alert>
 
@@ -60,36 +54,15 @@ export default function OrderBookingPage() {
           </p>
         </div>
 
-        {!isAuthenticated ? (
-          <Card className="border-chart-1/20 bg-accent/20 mb-8">
-            <CardHeader>
-              <CardTitle>Login Required</CardTitle>
-              <CardDescription>
-                Please log in with Internet Identity to submit your order. This helps us keep your information secure
-                and allows you to track your orders.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button
-                onClick={login}
-                disabled={isLoggingIn}
-                className="bg-gradient-to-r from-chart-1 to-chart-2 text-white hover:opacity-90"
-              >
-                {isLoggingIn ? 'Logging in...' : 'Login with Internet Identity'}
-              </Button>
-            </CardContent>
-          </Card>
-        ) : (
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Details</CardTitle>
-              <CardDescription>Please provide as much detail as possible about your project</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <OrderForm onSuccess={handleSubmitSuccess} />
-            </CardContent>
-          </Card>
-        )}
+        <Card>
+          <CardHeader>
+            <CardTitle>Order Details</CardTitle>
+            <CardDescription>Please provide as much detail as possible about your project</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <OrderForm onSuccess={handleSubmitSuccess} />
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

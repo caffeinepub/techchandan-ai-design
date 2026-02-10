@@ -1,70 +1,75 @@
 {
   "kind": "build_request",
-  "title": "Update site branding to \"TechChandan AI Design\" (header logo + homepage title)",
+  "title": "Convert Services pricing into tiered INR packages",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-11",
-      "text": "Update the site brand name everywhere it is displayed in the header logo text from \"AI Design Studio\" to \"TechChandan AI Design\".",
+      "id": "REQ-29",
+      "text": "Update the service pricing data to use the new tiered pricing packages (in INR) exactly as provided: YouTube Thumbnail — ₹199–299; Instagram Reel Cover — ₹149–199; Logo Design — ₹399–699; Social Media Post — ₹149; Banner Design — ₹299.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "Change website name to \"TechChandan AI Design\"\nUpdate header logo text and homepage title"
+          "Convert services into tiered pricing packages  🎨 Our Pricing\n\nYouTube Thumbnail — ₹199–299\nInstagram Reel Cover — ₹149–199\nLogo Design — ₹399–699\nSocial Media Post — ₹149\nBanner Design — ₹299"
         ]
       },
       "acceptanceCriteria": [
-        "The header brand/logo text renders exactly as \"TechChandan AI Design\" on desktop and mobile navigation.",
-        "No instances of \"AI Design Studio\" remain in the header UI."
+        "In frontend/src/config/services.ts, each service's price string matches the new INR value(s) (including the ₹ symbol and ranges where applicable).",
+        "No service in the Services/Order UI shows the old $ pricing."
       ]
     },
     {
-      "id": "REQ-12",
-      "text": "Update the homepage hero title text to reflect the new brand name \"TechChandan AI Design\" while keeping the existing AI/tech styling (gradient emphasis) consistent with the current design.",
+      "id": "REQ-30",
+      "text": "Update the Services page copy to present the pricing as packages by changing the main heading from \"Our Services\" to \"Our Pricing\" and ensure all displayed prices reflect the updated tiered INR packages.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "Update header logo text and homepage title"
+          "🎨 Our Pricing"
         ]
       },
       "acceptanceCriteria": [
-        "The primary H1/hero title on the Home page includes the exact text \"TechChandan AI Design\".",
-        "The hero title remains visually consistent with the existing typography and gradient style (no layout break on mobile)."
+        "frontend/src/pages/ServicesPage.tsx displays the page title as \"Our Pricing\" (English).",
+        "Each service card on the Services page displays the updated INR price (including ranges where applicable).",
+        "The existing per-service \"Order Now\" CTA continues to navigate to /order with the correct prefilled service selection."
       ]
     },
     {
-      "id": "REQ-13",
-      "text": "Update site metadata to use the new brand name \"TechChandan AI Design\" (including the base HTML document <title> and the central site metadata/config used for branding text).",
+      "id": "REQ-31",
+      "text": "Ensure all other UI surfaces that display service pricing use the updated tiered INR package values, including the Order form service dropdown and the Home page service preview section.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-5"
+          "msg-1"
         ],
         "quotes": [
-          "Change website name to \"TechChandan AI Design\""
+          "YouTube Thumbnail — ₹199–299",
+          "Instagram Reel Cover — ₹149–199",
+          "Logo Design — ₹399–699",
+          "Social Media Post — ₹149",
+          "Banner Design — ₹299"
         ]
       },
       "acceptanceCriteria": [
-        "The browser tab title includes \"TechChandan AI Design\".",
-        "The central site metadata/config brand name is set to \"TechChandan AI Design\"."
+        "In frontend/src/components/order/OrderForm.tsx, the Service Type select items show the updated INR price text for each service.",
+        "In frontend/src/pages/HomePage.tsx, the service preview cards show the updated INR price text for featured services.",
+        "All user-facing text remains in English (currency symbol and numeric values as provided)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (shadcn components are read-only).",
-    "Do not edit immutable hook/entry files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx."
+    "Do not edit any files under frontend/src/components/ui (shadcn UI components are read-only).",
+    "Do not introduce new backend changes; this request is pricing/UI-only.",
+    "Keep existing service IDs unchanged so order prefill and existing routing continue to work."
   ],
   "nonGoals": [
-    "Do not change the logo image asset (only update displayed text).",
-    "Do not change routing, services/pricing content, portfolio content, or order/booking flow behavior."
+    "Creating new service types beyond the five listed.",
+    "Adding payment processing or checkout.",
+    "Changing backend order storage schema or submission APIs."
   ],
   "imageRequirements": {
     "required": [],

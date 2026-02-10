@@ -1,7 +1,7 @@
 export const contactLinks = {
-  whatsapp: '+1234567890',
-  email: 'hello@aidesignstudio.com',
-  instagram: '@aidesignstudio',
+  whatsapp: '7739425361',
+  email: 'chandankumar0852139@gmail.com',
+  instagram: 'techchandan11',
 
   get whatsappUrl() {
     return `https://wa.me/${this.whatsapp.replace(/[^0-9]/g, '')}`;

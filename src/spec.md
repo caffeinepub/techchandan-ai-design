@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update site branding to “TechChandan AI Design” across the header, homepage hero title, and site metadata.
+**Goal:** Update the Services pricing and related UI copy to show tiered INR pricing packages across the site.
 
 **Planned changes:**
-- Replace the header brand/logo text “AI Design Studio” with “TechChandan AI Design” everywhere it appears in the header (desktop and mobile).
-- Update the Home page hero H1/title to include the exact text “TechChandan AI Design”, preserving the existing gradient/AI-tech styling and responsive layout.
-- Update site metadata/central branding config so the base document `<title>` (browser tab title) includes “TechChandan AI Design”.
+- Update `frontend/src/config/services.ts` so each service price string exactly matches the new INR package values (including the ₹ symbol and ranges where applicable).
+- Change the Services page main heading from “Our Services” to “Our Pricing” in `frontend/src/pages/ServicesPage.tsx` and ensure service cards display the updated INR prices.
+- Ensure all other UI surfaces that display service pricing (including `frontend/src/components/order/OrderForm.tsx` service dropdown and `frontend/src/pages/HomePage.tsx` service previews) show the updated INR price text while keeping existing service IDs and “Order Now” routing/prefill behavior intact.
 
-**User-visible outcome:** Visitors see “TechChandan AI Design” in the header branding, the homepage hero title, and the browser tab title, with styling consistent with the current design.
+**User-visible outcome:** Users see “Our Pricing” and the new tiered INR package prices consistently across the Services page, Home page service previews, and the Order form service selector, with ordering flows continuing to work as before.

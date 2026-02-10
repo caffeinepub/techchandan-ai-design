@@ -12,7 +12,7 @@ export const services: Service[] = [
     id: 'youtube-thumbnails',
     name: 'YouTube Thumbnails',
     description: 'Eye-catching thumbnails that boost your click-through rate',
-    price: '$15',
+    price: '₹199–299',
     category: 'YouTube',
     features: [
       'Custom design tailored to your brand',
@@ -26,7 +26,7 @@ export const services: Service[] = [
     id: 'instagram-reel-covers',
     name: 'Instagram Reel Covers',
     description: 'Professional covers that make your reels stand out',
-    price: '$12',
+    price: '₹149–199',
     category: 'Instagram',
     features: [
       'Optimized for Instagram format',
@@ -40,7 +40,7 @@ export const services: Service[] = [
     id: 'social-media-posts',
     name: 'Social Media Posts',
     description: 'Engaging graphics for all your social platforms',
-    price: '$10',
+    price: '₹149',
     category: 'Social Media',
     features: [
       'Multi-platform optimization',
@@ -54,7 +54,7 @@ export const services: Service[] = [
     id: 'logo-design',
     name: 'Logo Design',
     description: 'Unique, memorable logos that define your brand',
-    price: '$50',
+    price: '₹399–699',
     category: 'Branding',
     features: [
       '3 initial concepts',
@@ -68,7 +68,7 @@ export const services: Service[] = [
     id: 'banner-poster-design',
     name: 'Banner & Poster Design',
     description: 'Impactful banners and posters for any purpose',
-    price: '$25',
+    price: '₹299',
     category: 'Marketing',
     features: [
       'Custom size and format',

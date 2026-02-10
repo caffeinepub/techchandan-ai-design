@@ -1,26 +1,24 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T08:10:18.971Z",
-  "summary": "REQ-11/12/13 appear implemented: header logo text and homepage hero title now use siteData.brandName, siteData.brandName is set to \"TechChandan AI Design\", and the base HTML <title> includes the new brand name. Additionally, the footer branding was updated to use siteData.brandName (not explicitly requested).",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-10T09:15:40.644Z",
+  "summary": "The diff clearly updates the central service pricing data to the new tiered INR strings and changes the Services page heading to \"Our Pricing\" while rendering prices from the updated config. However, the diff does not show any concrete code changes to other pricing surfaces (Order form dropdown and Home page preview), so REQ-31 cannot be verified as implemented from the provided file diffs.",
+  "missing_requirements": [
     {
-      "description": "Footer brand/logo text updated to render {siteData.brandName} (centralized branding in footer as well, beyond the header/homepage/metadata requirements).",
-      "reason": "BuildRequest only specifies updating the header logo text, homepage hero title, and site metadata/config; it does not request changes to footer branding.",
+      "id": "REQ-31",
+      "requirement": "Ensure all other UI surfaces that display service pricing use the updated tiered INR package values, including the Order form service dropdown and the Home page service preview section.",
+      "reason": "No actual diffs are shown for OrderForm.tsx or HomePage.tsx, so there is no evidence that their displayed price text was updated to the new INR tiered values.",
       "evidence": [
-        "frontend/src/components/layout/Footer.tsx"
+        "frontend-file-summaries.txt (only summaries; no code diff for these files)"
       ]
     }
   ],
-  "confidence": 0.84,
+  "hallucinated_features": [],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/index.html",
-    "frontend/src/components/layout/Footer.tsx",
-    "frontend/src/components/layout/HeaderNav.tsx",
-    "frontend/src/config/siteData.ts",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/config/services.ts",
+    "frontend/src/pages/ServicesPage.tsx",
     "project_state.json"
   ]
 }

@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, AlertCircle } from 'lucide-react';
+import { Loader2, AlertCircle, Upload, X } from 'lucide-react';
 import { services } from '@/config/services';
 import { useSubmitBooking } from '@/hooks/useSubmitBooking';
 import { decodeServicePrefill } from '@/utils/orderPrefill';
@@ -15,12 +15,8 @@ import { useSearch } from '@tanstack/react-router';
 interface OrderFormData {
   name: string;
   email: string;
-  phoneNumber: string;
-  preferredContact: string;
   serviceType: string;
   description: string;
-  deadline: string;
-  budgetRange: string;
 }
 
 interface OrderFormProps {
@@ -36,30 +32,46 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
   } = useForm<OrderFormData>({
     defaultValues: {
       serviceType: prefilledService,
-      preferredContact: 'whatsapp',
     },
   });
 
   const [serviceType, setServiceType] = useState(prefilledService);
-  const [preferredContact, setPreferredContact] = useState('whatsapp');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const { submitBooking, isSubmitting, error } = useSubmitBooking();
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const clearFile = () => {
+    setSelectedFile(null);
+    const fileInput = document.getElementById('referenceFile') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  };
+
+  const formatFileSize = (bytes: number): string => {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  };
 
   const onSubmit = async (data: OrderFormData) => {
     try {
       await submitBooking({
         name: data.name,
-        phoneNumber: data.phoneNumber,
         email: data.email,
-        preferredContact: data.preferredContact,
         serviceType: data.serviceType,
         description: data.description,
-        deadline: data.deadline || 'Flexible',
-        budgetRange: data.budgetRange || 'Standard pricing',
+        referenceFile: selectedFile,
       });
       onSuccess();
     } catch (err) {
@@ -79,12 +91,12 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
       {/* Name */}
       <div className="space-y-2">
         <Label htmlFor="name">
-          Full Name <span className="text-destructive">*</span>
+          Name <span className="text-destructive">*</span>
         </Label>
         <Input
           id="name"
           {...register('name', { required: 'Name is required' })}
-          placeholder="John Doe"
+          placeholder="Your name"
           className={errors.name ? 'border-destructive' : ''}
         />
         {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
@@ -93,7 +105,7 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
       {/* Email */}
       <div className="space-y-2">
         <Label htmlFor="email">
-          Email Address <span className="text-destructive">*</span>
+          Email <span className="text-destructive">*</span>
         </Label>
         <Input
           id="email"
@@ -105,47 +117,10 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
               message: 'Invalid email address',
             },
           })}
-          placeholder="john@example.com"
+          placeholder="your@email.com"
           className={errors.email ? 'border-destructive' : ''}
         />
         {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-      </div>
-
-      {/* Phone Number */}
-      <div className="space-y-2">
-        <Label htmlFor="phoneNumber">
-          Phone Number <span className="text-destructive">*</span>
-        </Label>
-        <Input
-          id="phoneNumber"
-          {...register('phoneNumber', { required: 'Phone number is required' })}
-          placeholder="+1 234 567 8900"
-          className={errors.phoneNumber ? 'border-destructive' : ''}
-        />
-        {errors.phoneNumber && <p className="text-sm text-destructive">{errors.phoneNumber.message}</p>}
-      </div>
-
-      {/* Preferred Contact */}
-      <div className="space-y-2">
-        <Label htmlFor="preferredContact">
-          Preferred Contact Method <span className="text-destructive">*</span>
-        </Label>
-        <Select
-          value={preferredContact}
-          onValueChange={(value) => {
-            setPreferredContact(value);
-            setValue('preferredContact', value);
-          }}
-        >
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="whatsapp">WhatsApp</SelectItem>
-            <SelectItem value="email">Email</SelectItem>
-            <SelectItem value="instagram">Instagram</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       {/* Service Type */}
@@ -175,10 +150,10 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
         {errors.serviceType && <p className="text-sm text-destructive">{errors.serviceType.message}</p>}
       </div>
 
-      {/* Project Description */}
+      {/* Description */}
       <div className="space-y-2">
         <Label htmlFor="description">
-          Project Description <span className="text-destructive">*</span>
+          Description <span className="text-destructive">*</span>
         </Label>
         <Textarea
           id="description"
@@ -190,16 +165,40 @@ export default function OrderForm({ onSuccess }: OrderFormProps) {
         {errors.description && <p className="text-sm text-destructive">{errors.description.message}</p>}
       </div>
 
-      {/* Deadline (Optional) */}
+      {/* Reference Upload */}
       <div className="space-y-2">
-        <Label htmlFor="deadline">Deadline (Optional)</Label>
-        <Input id="deadline" {...register('deadline')} placeholder="e.g., 3 days, 1 week, ASAP" />
-      </div>
-
-      {/* Budget Range (Optional) */}
-      <div className="space-y-2">
-        <Label htmlFor="budgetRange">Budget Range (Optional)</Label>
-        <Input id="budgetRange" {...register('budgetRange')} placeholder="e.g., Standard, Premium, Custom" />
+        <Label htmlFor="referenceFile">Upload Reference (Optional)</Label>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Input
+              id="referenceFile"
+              type="file"
+              onChange={handleFileChange}
+              accept="image/*,.pdf,.doc,.docx"
+              className="cursor-pointer"
+            />
+          </div>
+          {selectedFile && (
+            <div className="flex items-center justify-between p-3 bg-accent/50 rounded-md border border-border">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <Upload className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">{selectedFile.name}</p>
+                  <p className="text-xs text-muted-foreground">{formatFileSize(selectedFile.size)}</p>
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={clearFile}
+                className="flex-shrink-0 h-8 w-8 p-0"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
 
       <Button

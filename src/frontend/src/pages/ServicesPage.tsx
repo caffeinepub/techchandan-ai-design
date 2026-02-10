@@ -11,7 +11,7 @@ export default function ServicesPage() {
     <div className="py-16 md:py-24">
       <div className="container">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Pricing</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Professional AI-powered design services tailored for content creators, influencers, and businesses
           </p>

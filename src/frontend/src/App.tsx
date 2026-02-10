@@ -6,6 +6,30 @@ import ContactPage from './pages/ContactPage';
 import OrderBookingPage from './pages/OrderBookingPage';
 import SiteLayout from './components/layout/SiteLayout';
 
+/**
+ * ROUTER ARCHITECTURE - DUPLICATION PREVENTION:
+ * 
+ * This router uses a single root route that wraps ALL child routes with SiteLayout.
+ * SiteLayout provides the header, footer, and main content area via <Outlet />.
+ * 
+ * CRITICAL: Each page component (HomePage, ServicesPage, etc.) should be a PURE page view.
+ * - DO NOT wrap page components in SiteLayout directly
+ * - DO NOT create duplicate route definitions for the same path
+ * - The layout is applied ONCE at the root level only
+ * 
+ * REGRESSION CHECK:
+ * To verify no duplication exists:
+ * 1. Navigate to "/" in the browser
+ * 2. Open DevTools and inspect the DOM
+ * 3. Search for data-section="home-hero" (should find exactly 1 match)
+ * 4. Search for data-section="home-features" (should find exactly 1 match)
+ * 5. Search for data-section="home-services" (should find exactly 1 match)
+ * 6. Search for data-section="home-cta" (should find exactly 1 match)
+ * 7. Check console for any duplication warnings from SiteLayout
+ * 
+ * If any section appears more than once, the router composition has been broken.
+ */
+
 const rootRoute = createRootRoute({
   component: () => (
     <SiteLayout>

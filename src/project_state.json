@@ -1,15 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Professional portfolio + service-selling website for an AI-powered design business with modern minimal AI/tech aesthetic, showcasing services, pricing, portfolio, contact links, and an order/booking request flow.",
+  "projectStateVersion": 15,
+  "summary": "Professional portfolio + service-selling website for an AI-powered design business with modern minimal AI/tech aesthetic, showcasing services, pricing, portfolio, contact links, and a simplified guest-accessible order request flow (no login required) including reference upload.",
   "architectural_notes": [
     "Target audience: content creators, YouTubers, influencers, and small businesses seeking affordable design services.",
     "Design style: modern/minimal AI/tech theme; clean futuristic look with neon blue, purple, black palette.",
     "Core pages: Home, Services (with pricing), Portfolio/Gallery, Contact (WhatsApp/email/Instagram), Order/Booking request flow.",
     "Site must be mobile-friendly with easy navigation.",
-    "Brand/site name: \"TechChandan AI Design\" (reflect in header logo text and Home page title)."
+    "Brand/site name: \"TechChandan AI Design\" (reflect in header logo text and Home page title).",
+    "Real contact details to use site-wide (Contact page + footer): WhatsApp 7739425361, Email chandankumar0852139@gmail.com, Instagram https://instagram.com/techchandan11.",
+    "Authentication request: support DFINITY Internet Identity (II) login/logout; clarify whether Order/Booking requires login or allows guest submission.",
+    "Order/Booking flow decision: remove Internet Identity authentication requirement for accessing/submitting the order form; allow guest submissions.",
+    "Order form update: simplified fields (Name, Email, Service Type, Description) and add a reference upload input.",
+    "Services/pricing update: present offerings as \"Our Pricing\" tiered packages with ranges (e.g., YouTube Thumbnail ₹199–299; Instagram Reel Cover ₹149–199; Logo Design ₹399–699) and fixed prices where specified (Social Media Post ₹149; Banner Design ₹299)."
   ],
-  "known_issues": [],
+  "known_issues": [
+    "Homepage layout duplication causing duplicate sections / multiple homepage views; should render a single homepage view without repeated sections."
+  ],
   "isFixRequest": false,
   "existing_features": [
     {
@@ -107,6 +114,118 @@
         "REQ-13"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-fix-the-homepage-layout-duplication-so-that-navigating-to-the-home-route-renders-exactly-one-homepage-view-no-repeated-hero-features-services-preview-or-cta-sections",
+      "title": "Fix the homepage layout duplication so that navigating to the Home route (\"/\") renders exactly one HomePage view (no repeated hero, features, services preview, or CTA sections).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-identify-and-remove-the-root-cause-of-duplicate-homepage-rendering-by-auditing-route-composition-and-layout-wrapping-e-g-ensure-sitelayout-is-applied-only-once-via-the-router-root-and-homepage-is-not-indirectly-mounted-twice",
+      "title": "Identify and remove the root cause of duplicate homepage rendering by auditing route composition and layout wrapping (e.g., ensure SiteLayout is applied only once via the router root and HomePage is not indirectly mounted twice).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-lightweight-regression-check-developer-facing-to-prevent-reintroducing-duplicate-homepage-sections-such-as-a-simple-dom-assertion-in-an-existing-test-pattern-or-a-clearly-documented-manual-verification-step-in-code-comments-near-the-router-layout-setup",
+      "title": "Add a lightweight regression check (developer-facing) to prevent reintroducing duplicate homepage sections, such as a simple DOM assertion in an existing test pattern or a clearly documented manual verification step in code comments near the router/layout setup.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-central-contact-configuration-in-frontend-src-config-contactlinks-ts-to-use-the-user-s-real-contact-details-whatsapp-phone-number-7739425361-email-chandankumar0852139-gmail-com-and-instagram-https-instagram-com-techchandan11-ensuring-the-generated-instagramurl-resolves-exactly-to-that-url",
+      "title": "Update the central contact configuration in frontend/src/config/contactLinks.ts to use the user’s real contact details: WhatsApp phone number 7739425361, email chandankumar0852139@gmail.com, and Instagram https://instagram.com/techchandan11 (ensuring the generated instagramUrl resolves exactly to that URL).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-contact-page-and-the-global-footer-display-and-link-to-the-updated-whatsapp-email-and-instagram-details-replacing-any-placeholder-contact-info-across-all-pages-that-include-the-footer",
+      "title": "Ensure the Contact page and the global footer display and link to the updated WhatsApp, email, and Instagram details (replacing any placeholder contact info) across all pages that include the footer.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-require-internet-identity-authentication-to-access-and-submit-the-order-booking-flow-on-the-order-route-showing-a-login-prompt-when-the-user-is-not-authenticated-and-the-order-form-only-when-authenticated",
+      "title": "Require Internet Identity authentication to access and submit the Order/Booking flow on the /order route, showing a login prompt when the user is not authenticated and the order form only when authenticated.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-global-authentication-control-in-the-site-header-navigation-that-reflects-internet-identity-state-logged-out-vs-logged-in-and-supports-login-and-logout-actions",
+      "title": "Add a global authentication control in the site header navigation that reflects Internet Identity state (logged out vs logged in) and supports login and logout actions.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-internet-identity-login-requirement-from-the-order-orderbookingpage-route-and-always-display-the-order-form-to-all-visitors-authenticated-or-not",
+      "title": "Remove the Internet Identity login requirement from the /order (OrderBookingPage) route and always display the order form to all visitors (authenticated or not).",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-complex-booking-form-with-a-simplified-order-form-that-collects-only-name-email-service-type-description-and-an-optional-reference-upload-plus-a-submit-button",
+      "title": "Replace the current complex booking form with a simplified order form that collects only: Name, Email, Service Type, Description, and an optional Reference Upload, plus a Submit button.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-client-side-handling-for-the-reference-upload-field-so-that-a-selected-file-is-included-with-the-order-submission-and-the-ui-shows-clear-selected-file-feedback-and-submission-loading-error-states",
+      "title": "Implement client-side handling for the Reference Upload field so that a selected file is included with the order submission and the UI shows clear selected-file feedback and submission loading/error states.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-submission-hook-and-its-backend-call-mapping-to-match-the-new-backend-order-submission-interface-including-optional-reference-upload-and-ensure-it-works-for-both-anonymous-and-authenticated-sessions",
+      "title": "Update the frontend submission hook and its backend call mapping to match the new backend order submission interface (including optional reference upload), and ensure it works for both anonymous and authenticated sessions.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-post-submission-success-message-on-the-order-page-to-remove-references-to-preferred-contact-method-since-the-simplified-form-no-longer-collects-it-and-keep-the-message-clear-and-in-english",
+      "title": "Update the post-submission success message on the Order page to remove references to 'preferred contact method' (since the simplified form no longer collects it) and keep the message clear and in English.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-service-pricing-data-to-use-the-new-tiered-pricing-packages-in-inr-exactly-as-provided-youtube-thumbnail-199-299-instagram-reel-cover-149-199-logo-design-399-699-social-media-post-149-banner-design-299",
+      "title": "Update the service pricing data to use the new tiered pricing packages (in INR) exactly as provided: YouTube Thumbnail — ₹199–299; Instagram Reel Cover — ₹149–199; Logo Design — ₹399–699; Social Media Post — ₹149; Banner Design — ₹299.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-services-page-copy-to-present-the-pricing-as-packages-by-changing-the-main-heading-from-our-services-to-our-pricing-and-ensure-all-displayed-prices-reflect-the-updated-tiered-inr-packages",
+      "title": "Update the Services page copy to present the pricing as packages by changing the main heading from \"Our Services\" to \"Our Pricing\" and ensure all displayed prices reflect the updated tiered INR packages.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -158,6 +277,62 @@
       "id": "AR-15",
       "summary": "Update website branding name to \"TechChandan AI Design\" (update header logo text and homepage title accordingly).",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Replace all placeholder contact info with real details (WhatsApp: 7739425361, Email: chandankumar0852139@gmail.com, Instagram: https://instagram.com/techchandan11) on Contact page and in footer across all pages.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add authentication via DFINITY Internet Identity (login/logout) and integrate it with the site (including the Order page as needed).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Ensure backend booking submission works for Internet Identity authenticated users by aligning backend authorization behavior with the frontend Internet Identity login (so an authenticated user can successfully call submitBooking without receiving 'Unauthorized: Only users can submit bookings').",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Remove Internet Identity login requirement from the Order page and allow guest submissions via a simplified order form with fields: Name, Email, Service Type, Description, and Reference Upload, plus Submit.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Update the backend booking submission to allow guest (anonymous) submissions from the Order page, instead of requiring the caller to have the #user permission.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Extend the backend booking data model and submission method to persist the simplified order fields (Name, Email, Service Type, Description) and an optional uploaded reference file (including filename, content type, and bytes).",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Convert Services pricing into tiered pricing packages and update the pricing section to: YouTube Thumbnail ₹199–299, Instagram Reel Cover ₹149–199, Logo Design ₹399–699, Social Media Post ₹149, Banner Design ₹299.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-30",
+      "summary": "Ensure all other UI surfaces that display service pricing use the updated tiered INR package values, including the Order form service dropdown and the Home page service preview section.",
+      "reqIds": [
+        "REQ-31"
+      ],
       "status": "pending"
     }
   ],
